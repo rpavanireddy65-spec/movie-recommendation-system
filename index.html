@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CineMatch - Movie Recommendation System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🎬 CineMatch
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#discover">Discover</a>
+            <a href="#recommendations">Recommendations</a>
+        </div>
+
+        <button class="favorites-btn" onclick="showFavorites()">
+            ❤️ <span id="favoriteCount">0</span>
+        </button>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ Personalized Movie Recommendations
+            </div>
+
+            <h1>
+                Find your next
+                <span>favorite movie.</span>
+            </h1>
+
+            <p>
+                Tell CineMatch what you like and discover movies
+                selected specially for your preferences.
+            </p>
+
+            <button class="hero-btn" onclick="startDiscovering()">
+                🍿 Start Discovering
+            </button>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="movie-poster big-poster">
+                🎬
+            </div>
+
+            <div class="floating-card card-one">
+                ⭐ 9.2
+            </div>
+
+            <div class="floating-card card-two">
+                ❤️ For You
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DISCOVER -->
+    <section id="discover" class="discover">
+
+        <div class="section-heading">
+
+            <span>PERSONALIZE YOUR EXPERIENCE</span>
+
+            <h2>What do you love watching?</h2>
+
+            <p>
+                Select your preferences and we'll find movies for you.
+            </p>
+
+        </div>
+
+
+        <div class="preference-box">
+
+            <!-- GENRES -->
+            <div class="preference-section">
+
+                <h3>🎭 Choose your favorite genres</h3>
+
+                <div class="genre-container">
+
+                    <button class="genre" data-genre="Action">
+                        💥 Action
+                    </button>
+
+                    <button class="genre" data-genre="Comedy">
+                        😂 Comedy
+                    </button>
+
+                    <button class="genre" data-genre="Drama">
+                        🎭 Drama
+                    </button>
+
+                    <button class="genre" data-genre="Romance">
+                        ❤️ Romance
+                    </button>
+
+                    <button class="genre" data-genre="Sci-Fi">
+                        🚀 Sci-Fi
+                    </button>
+
+                    <button class="genre" data-genre="Thriller">
+                        🔥 Thriller
+                    </button>
+
+                    <button class="genre" data-genre="Animation">
+                        🧸 Animation
+                    </button>
+
+                    <button class="genre" data-genre="Adventure">
+                        🗺️ Adventure
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- LANGUAGE -->
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>🌎 Preferred Language</label>
+
+                    <select id="language">
+
+                        <option value="Any">
+                            Any Language
+                        </option>
+
+                        <option value="English">
+                            English
+                        </option>
+
+                        <option value="Hindi">
+                            Hindi
+                        </option>
+
+                        <option value="Telugu">
+                            Telugu
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- RATING -->
+                <div class="form-group">
+
+                    <label>⭐ Minimum Rating</label>
+
+                    <select id="rating">
+
+                        <option value="0">
+                            Any Rating
+                        </option>
+
+                        <option value="7">
+                            7+
+                        </option>
+
+                        <option value="8">
+                            8+
+                        </option>
+
+                        <option value="9">
+                            9+
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOOD -->
+
+            <div class="form-group mood-group">
+
+                <label>😊 What's your mood?</label>
+
+                <div class="mood-container">
+
+                    <button class="mood" data-mood="Happy">
+                        😄 Happy
+                    </button>
+
+                    <button class="mood" data-mood="Excited">
+                        🤩 Excited
+                    </button>
+
+                    <button class="mood" data-mood="Emotional">
+                        🥹 Emotional
+                    </button>
+
+                    <button class="mood" data-mood="Relaxed">
+                        😌 Relaxed
+                    </button>
+
+                    <button class="mood" data-mood="Adventurous">
+                        🧭 Adventurous
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-area">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔎 Search for a movie..."
+                >
+
+            </div>
+
+
+            <button class="recommend-btn" onclick="getRecommendations()">
+                ✨ Find My Movies
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECOMMENDATIONS -->
+
+    <section id="recommendations" class="recommendations">
+
+        <div class="section-heading">
+
+            <span>YOUR PERSONALIZED RESULTS</span>
+
+            <h2>Movies picked for you 🍿</h2>
+
+            <p id="recommendationMessage">
+                Choose your preferences above to get recommendations.
+            </p>
+
+        </div>
+
+
+        <div id="movieGrid" class="movie-grid">
+
+            <div class="empty-state">
+
+                <div>🎥</div>
+
+                <h3>Your recommendations will appear here</h3>
+
+                <p>
+                    Select your preferences and click
+                    "Find My Movies".
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>🎬 CineMatch</h3>
+
+        <p>
+            Personalized movie recommendations using
+            preference-based recommendation techniques.
+        </p>
+
+        <small>
+            Educational project • Recommendations are generated from the available dataset.
+        </small>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
